@@ -25,7 +25,7 @@ Antes de instalar la distro, comprueba el estado de WSL:
 wsl --status
 ```
 
-Si WSL no está instalado, verás mensajes indicando que faltan componentes. En ese caso, sigue los pasos siguientes.
+Si WSL no está instalado, verás mensajes indicando que faltan componentes. En ese caso, sigue los pasos del punto 2. Si ya está wsl instalado pasa al punto 3.
 
 ---
 
