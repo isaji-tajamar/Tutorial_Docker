@@ -31,7 +31,7 @@ Esta guía explica paso a paso cómo:
 - Configurar correctamente la distribución  
 
 **Guía:**  
-[Instalación WSL con Ubuntu 22.04 LTS](instalacion_wsl_ubuntu_22_04.md)
+[Instalación WSL con Ubuntu 22.04 LTS](guias_instalacion/instalacion_wsl_ubuntu_22_04.md)
 
 ---
 
@@ -46,7 +46,7 @@ Incluye:
 - Instalación opcional de Docker Compose  
 
 **Guía:**  
-[Instalación Docker en Ubuntu 22.04 LTS](instalacion_docker_wsl_ubuntu_22_04.md)
+[Instalación Docker en Ubuntu 22.04 LTS](guias_instalacion/instalacion_docker_wsl_ubuntu_22_04.md)
 
 ---
 
