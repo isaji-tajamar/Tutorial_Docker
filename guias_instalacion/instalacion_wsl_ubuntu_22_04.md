@@ -108,8 +108,11 @@ Cuando abras la distribución (desde el menú o ejecutando `ubuntu2204`), se con
 2. Iniciará el entorno de usuario UNIX.
 3. Te pedirá crear un usuario:
 
+> [!IMPORTANT]
+> Para los ordenadores de clase poner las credenciales 'username: user' y 'password: user'
+
 ```
-Enter new UNIX username: isaji
+Enter new UNIX username: user
 ```
 
 4. Finalmente te pedirá una contraseña UNIX (no se muestran caracteres al escribir):
