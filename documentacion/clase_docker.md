@@ -11,15 +11,15 @@ Este repositorio contiene el material para una clase/taller de **Introducción a
 
 ## Índice
 
-1. Componentes de Docker: Docker Engine, CLI y API  
-2. Imágenes, contenedores y capas  
-3. Docker Hub y repositorios privados  
-4. Dockerfiles: anatomía y sintaxis  
-5. Versionado y etiquetado de imágenes  
-6. Persistencia de datos  
-7. Volúmenes y bind mounts  
-8. Redes en Docker  
-9. Introducción a Docker Compose  
+1. [Componentes de Docker: Docker Engine, CLI y API](#1-componentes-de-docker-docker-engine-cli-y-api)  
+2. [Imágenes, contenedores y capas](#2-imágenes-contenedores-y-capas)  
+3. [Volúmenes y bind mounts](#3-volúmenes-y-bind-mounts)  
+4. [Dockerfiles: Anatomía y Sintaxis](#4-dockerfiles-anatomía-y-sintaxis)  
+5. [Versionado y etiquetado](#5-versionado-y-etiquetado)  
+6. [Docker Hub y repositorios privados](#6-docker-hub-y-repositorios-privados)  
+7. [Redes](#7-redes)  
+8. [Docker Compose](#8-docker-compose)  
+
 
 ---
 
