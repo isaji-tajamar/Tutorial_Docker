@@ -72,7 +72,7 @@ Si ambos comandos funcionan, tu entorno está listo para la clase.
 
 ## 4. Documentación de la clase (teoría)
 
-En la carpeta `documentacion/` encontrarás los materiales teóricos y apuntes para la clase, organizados por apartados (componentes, imágenes, contenedores, redes, volúmenes, dockerfiles, compose, etc.). En este caso está todo en el archivo [clase_docker.md](documentacion/clase_docker.md)
+En la carpeta `documentacion/` encontrarás los materiales teóricos y apuntes para la clase (componentes, imágenes, contenedores, redes, volúmenes, dockerfiles, compose, etc.). En este caso está todo en el archivo [clase_docker.md](documentacion/clase_docker.md). También encontrarás una cheatsheet con comandos de docker.
 
 ---
 
