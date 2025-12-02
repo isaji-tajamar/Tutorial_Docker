@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Compose Demo Web</title>
+	<style>
+		:root {
+			--bg: #0b1020;
+			--card: rgba(255, 255, 255, .06);
+			--card-2: rgba(255, 255, 255, .10);
+			--text: rgba(255, 255, 255, .92);
+			--muted: rgba(255, 255, 255, .68);
+			--border: rgba(255, 255, 255, .14);
+			--shadow: 0 20px 60px rgba(0, 0, 0, .45);
+			--radius: 18px;
+			--ring: 0 0 0 4px rgba(101, 121, 255, .25);
+			--ok: rgba(52, 211, 153, .18);
+			--bad: rgba(248, 113, 113, .18);
+			--warn: rgba(251, 191, 36, .18);
+		}
+
+		* {
+			box-sizing: border-box;
+		}
+
+		html,
+		body {
+			height: 100%;
+		}
+
+		body {
+			margin: 0;
+			font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+			color: var(--text);
+			background:
+				radial-gradient(1200px 600px at 20% 10%, rgba(101, 121, 255, .25), transparent 55%),
+				radial-gradient(900px 500px at 90% 20%, rgba(56, 189, 248, .18), transparent 60%),
+				radial-gradient(1000px 600px at 40% 100%, rgba(244, 63, 94, .12), transparent 55%),
+				var(--bg);
+		}
+
+		a {
+			color: inherit;
+			text-decoration-thickness: .12em;
+			text-underline-offset: .18em;
+		}
+
+		code {
+			font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+			font-size: .95em;
+			background: rgba(255, 255, 255, .08);
+			border: 1px solid var(--border);
+			padding: .15rem .4rem;
+			border-radius: .55rem;
+		}
+
+		.container {
+			max-width: 980px;
+			margin: 0 auto;
+			padding: 48px 18px 64px;
+		}
+
+		.hero {
+			display: grid;
+			gap: 14px;
+			margin-bottom: 18px;
+		}
+
+		.title {
+			font-size: clamp(28px, 4vw, 46px);
+			line-height: 1.05;
+			letter-spacing: -0.02em;
+			margin: 0;
+		}
+
+		.subtitle {
+			margin: 0;
+			color: var(--muted);
+			font-size: 16px;
+			line-height: 1.55;
+			max-width: 75ch;
+		}
+
+		.grid {
+			display: grid;
+			grid-template-columns: 1.2fr .8fr;
+			gap: 16px;
+			align-items: start;
+			margin-top: 22px;
+		}
+
+		@media (max-width: 880px) {
+			.grid {
+				grid-template-columns: 1fr;
+			}
+		}
+
+		.card {
+			background: linear-gradient(180deg, var(--card), rgba(255, 255, 255, .03));
+			border: 1px solid var(--border);
+			border-radius: var(--radius);
+			box-shadow: var(--shadow);
+			overflow: hidden;
+		}
+
+		.card-header {
+			padding: 18px 18px 12px;
+			border-bottom: 1px solid rgba(255, 255, 255, .08);
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 12px;
+		}
+
+		.card-title {
+			margin: 0;
+			font-size: 15px;
+			letter-spacing: .02em;
+			color: rgba(255, 255, 255, .88);
+			text-transform: uppercase;
+		}
+
+		.pill {
+			font-size: 12px;
+			color: rgba(255, 255, 255, .78);
+			border: 1px solid var(--border);
+			padding: 6px 10px;
+			border-radius: 999px;
+			background: rgba(255, 255, 255, .06);
+			white-space: nowrap;
+		}
+
+		.card-body {
+			padding: 16px 18px 18px;
+		}
+
+		.actions {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 10px;
+			align-items: center;
+			margin: 6px 0 14px;
+		}
+
+		button {
+			appearance: none;
+			border: 1px solid rgba(255, 255, 255, .18);
+			background: linear-gradient(180deg, rgba(255, 255, 255, .14), rgba(255, 255, 255, .06));
+			color: var(--text);
+			padding: 10px 14px;
+			border-radius: 12px;
+			font-weight: 650;
+			letter-spacing: .01em;
+			cursor: pointer;
+			transition: transform .08s ease, background .2s ease, border-color .2s ease;
+		}
+
+		button:hover {
+			border-color: rgba(255, 255, 255, .28);
+			transform: translateY(-1px);
+		}
+
+		button:focus {
+			outline: none;
+			box-shadow: var(--ring);
+		}
+
+		button:active {
+			transform: translateY(0);
+		}
+
+		button.secondary {
+			font-weight: 600;
+			background: rgba(255, 255, 255, .06);
+		}
+
+		.status {
+			margin-left: auto;
+			font-size: 13px;
+			color: var(--muted);
+			display: flex;
+			align-items: center;
+			gap: 8px;
+		}
+
+		.dot {
+			width: 10px;
+			height: 10px;
+			border-radius: 999px;
+			background: rgba(251, 191, 36, .9);
+			box-shadow: 0 0 0 3px rgba(251, 191, 36, .18);
+		}
+
+		.dot.ok {
+			background: rgba(52, 211, 153, .95);
+			box-shadow: 0 0 0 3px rgba(52, 211, 153, .18);
+		}
+
+		.dot.bad {
+			background: rgba(248, 113, 113, .95);
+			box-shadow: 0 0 0 3px rgba(248, 113, 113, .18);
+		}
+
+		.list {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+			display: grid;
+			gap: 10px;
+		}
+
+		.item {
+			border: 1px solid rgba(255, 255, 255, .12);
+			background: rgba(255, 255, 255, .05);
+			border-radius: 14px;
+			padding: 12px 12px;
+			display: flex;
+			gap: 10px;
+			align-items: flex-start;
+		}
+
+		.badge {
+			min-width: 30px;
+			height: 30px;
+			border-radius: 10px;
+			display: grid;
+			place-items: center;
+			font-weight: 750;
+			background: rgba(101, 121, 255, .20);
+			border: 1px solid rgba(101, 121, 255, .35);
+		}
+
+		.item p {
+			margin: 2px 0 0;
+			color: rgba(255, 255, 255, .88);
+			line-height: 1.35;
+		}
+
+		.muted {
+			color: var(--muted);
+		}
+
+		.callout {
+			border: 1px solid rgba(255, 255, 255, .14);
+			background: rgba(255, 255, 255, .05);
+			border-radius: 16px;
+			padding: 14px 14px;
+			color: rgba(255, 255, 255, .86);
+			line-height: 1.55;
+		}
+
+		.callout.ok {
+			background: var(--ok);
+		}
+
+		.callout.bad {
+			background: var(--bad);
+		}
+
+		.callout.warn {
+			background: var(--warn);
+		}
+
+		.footer {
+			margin-top: 18px;
+			color: rgba(255, 255, 255, .55);
+			font-size: 13px;
+		}
+
+		input {
+			flex: 1;
+			min-width: 220px;
+			padding: 10px 12px;
+			border-radius: 12px;
+			background: rgba(255, 255, 255, .06);
+			border: 1px solid rgba(255, 255, 255, .18);
+			color: rgba(255, 255, 255, .92);
+			outline: none;
+		}
+
+		input:focus {
+			box-shadow: var(--ring);
+			border-color: rgba(255, 255, 255, .28);
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<div class="hero">
+			<h1 class="title">Web simple (Nginx) consumiendo FastAPI</h1>
+			<p class="subtitle">
+				Este frontend carga datos desde <code>/api/notes</code> (Nginx hace proxy hacia la API).
+			</p>
+		</div>
+
+		<div class="grid">
+			<div class="card">
+				<div class="card-header">
+					<h2 class="card-title">Notas</h2>
+					<span class="pill">GET /api/notes</span>
+				</div>
+				<div class="card-body">
+					<div class="actions">
+						<input id="title" placeholder="Nueva nota..." />
+						<button id="btnCreate">Crear nota</button>
+
+						<button id="btn">Cargar notas</button>
+						<button class="secondary" id="btnHealth">Comprobar health</button>
+
+						<div class="status">
+							<span id="dot" class="dot"></span>
+							<span id="statusText">Listo</span>
+						</div>
+					</div>
+
+					<ul id="list" class="list"></ul>
+				</div>
+			</div>
+
+			<div class="card">
+				<div class="card-header">
+					<h2 class="card-title">Info</h2>
+					<span class="pill">Compose demo</span>
+				</div>
+				<div class="card-body">
+					<div id="msg" class="callout warn">
+						Pulsa “Cargar notas” para traer datos desde Postgres a través de FastAPI.
+					</div>
+
+					<p class="footer">
+						Tip: si ves <strong>502</strong>, revisa el contenedor <code>api</code> y el proxy de Nginx.
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<script>
+		const btn = document.getElementById("btn");
+		const btnHealth = document.getElementById("btnHealth");
+		const list = document.getElementById("list");
+		const msg = document.getElementById("msg");
+		const dot = document.getElementById("dot");
+		const statusText = document.getElementById("statusText");
+		const inputTitle = document.getElementById("title");
+		const btnCreate = document.getElementById("btnCreate");
+
+		async function createNote() {
+			const title = (inputTitle.value || "").trim();
+			if (!title) {
+				setStatus("warn", "Escribe un título antes de crear.");
+				return;
+			}
+
+			try {
+				setStatus("", "Creando nota...");
+				const res = await fetch("/api/notes", {
+					method: "POST",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify({ title })
+				});
+
+				if (!res.ok) {
+					const text = await res.text();
+					setStatus("bad", `Error ${res.status} creando nota: ${text}`);
+					return;
+				}
+
+				inputTitle.value = "";
+				setStatus("ok", "Nota creada. Recargando...");
+				await loadNotes();
+			} catch (e) {
+				setStatus("bad", "No se pudo crear la nota (API inaccesible).");
+			}
+		}
+
+		btnCreate.addEventListener("click", createNote);
+		inputTitle.addEventListener("keydown", (e) => {
+			if (e.key === "Enter") createNote();
+		});
+
+
+		function setStatus(type, text) {
+			dot.className = "dot" + (type ? ` ${type}` : "");
+			statusText.textContent = text;
+			msg.className = "callout " + (type || "warn");
+			msg.textContent = text;
+		}
+
+		async function loadNotes() {
+			try {
+				setStatus("", "Cargando notas...");
+				list.innerHTML = "";
+
+				const res = await fetch("/api/notes");
+				if (!res.ok) {
+					setStatus("bad", `Error ${res.status} al llamar /api/notes`);
+					list.innerHTML = `<li class="item"><div class="badge">!</div><p>Error: ${res.status}</p></li>`;
+					return;
+				}
+
+				const data = await res.json();
+				if (!Array.isArray(data) || data.length === 0) {
+					setStatus("warn", "La API respondió, pero no hay notas.");
+					return;
+				}
+
+				data.forEach(n => {
+					const li = document.createElement("li");
+					li.className = "item";
+					li.innerHTML = `<div class="badge">${n.id}</div><p>${n.title}</p>`;
+					list.appendChild(li);
+				});
+
+				setStatus("ok", `OK, ${data.length} nota(s) cargada(s).`);
+			} catch (e) {
+				setStatus("bad", "No se pudo conectar con la API (posible 502 o API caída).");
+			}
+		}
+
+		async function checkHealth() {
+			try {
+				setStatus("", "Comprobando /api/health...");
+				const res = await fetch("/api/health");
+				if (!res.ok) {
+					setStatus("bad", `Health no OK (${res.status})`);
+					return;
+				}
+				const data = await res.json();
+				setStatus("ok", `Health OK: ${data.status}`);
+			} catch {
+				setStatus("bad", "No se pudo comprobar health (API inaccesible).");
+			}
+		}
+
+		btn.addEventListener("click", loadNotes);
+		btnHealth.addEventListener("click", checkHealth);
+	</script>
+</body>
+
+</html>
