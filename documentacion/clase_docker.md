@@ -20,6 +20,10 @@ Este repositorio contiene el material para una clase/taller de **Introducción a
 7. [Redes](#7-redes)  
 8. [Docker Compose](#8-docker-compose)  
 
+---
+
+## ¿Qué es docker?
+Docker es una plataforma que permite crear, empaquetar y ejecutar aplicaciones dentro de contenedores ligeros y portables. Estos contenedores incluyen todo lo necesario para que la aplicación funcione (dependencias, librerías y configuración) garantizando entornos reproducibles, despliegues rápidos y un comportamiento consistente en cualquier sistema.
 
 ---
 
