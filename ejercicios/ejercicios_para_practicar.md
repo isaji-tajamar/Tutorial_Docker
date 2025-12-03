@@ -1,6 +1,7 @@
 ## Ejercicios prácticos del curso (por apartados, fusionando conceptos)
 
-> [!IMPORTANT] Reglas generales:
+> [!IMPORTANT]
+> Reglas generales:
 > En todos los ejercicios, documenta los comandos que uses y el resultado (captura o salida).
 
 ---
@@ -74,7 +75,7 @@
 
 **Objetivo:** usar tags y entender por qué importan.
 
-1. Re-etiqueta tu imagen del ejercicio 4:
+1. Re-etiqueta tu imagen del ejercicio 3:
    - `tuapp:1.0.0`, `tuapp:1.0.1`, `tuapp:dev`
 2. Lista imágenes y comprueba el “mismo ID” o diferencias según el caso:
    - `docker image ls`
